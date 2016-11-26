@@ -6,8 +6,8 @@
 	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
 	<meta name="author" content="Hege Refsnes">
 	<title>Bienes en Costa Rica - @yield('title')</title>
-	<link rel="stylesheet" href="assets/css/foundation.css" />
-    <script type="text/javascript" src="assets/js/vendor/modernizr.js"/>
+	<link rel="stylesheet" href="css/app.css" />
+    <script type="text/javascript" src="js/app.js"/>
 </head>
 <body>
 	<div class="container">
