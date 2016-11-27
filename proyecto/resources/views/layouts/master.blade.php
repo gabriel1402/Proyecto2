@@ -6,54 +6,19 @@
 	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
 	<meta name="author" content="Hege Refsnes">
 	<title>Bienes en Costa Rica - @yield('title')</title>
-	<link rel="stylesheet" href="css/app.css" />
-    <script type="text/javascript" src="js/app.js"/>
+	
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
 </head>
 <body>
-	<div class="container">
-	  <div class="row">
-	    <div class="span12">
-	      <div class="head">
-	        <div class="row-fluid">
-	            <div class="span12">
-	                <div class="span6">
-	                    <h1 class="muted">Company Name</h1>
-	                </div>
-
-	                <div class="span4 offset2" style="margin-top:15px;">
-	                    <button class="btn pull-right" type="button">Sign In</button>
-	                </div>
-	            </div>
-	        </div>
-
-	        <div class="navbar">
-	            <div class="navbar-inner">
-	                <div class="container">
-	                    <ul class="nav">
-	                        <li>
-	                            <a href="#">Inicio</a>
-	                        </li>
-
-	                        <li>
-	                            <a href="#">Buscar</a>
-	                        </li>
-
-	                        <li>
-	                            <a href="#">Registrarse</a>
-	                        </li>
-
-	                        <li>
-	                            <a href="#">Contactanos</a>
-	                        </li>
-	                    </ul>
-	                </div>
-	            </div>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	<div class="row">
+	<div>
 		@yield('content')
 	</div>
 </body>
