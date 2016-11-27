@@ -7,7 +7,7 @@ Dashboard
 
 
 @section('menu')
-    <li class="active"><a href="#">Inicio</a></li>
+    <li class="active"><a href="/">Inicio</a></li>
     <li><a href="#">Buscar</a></li>
     <li><a href="#">Contactanos</a></li>
 @stop
