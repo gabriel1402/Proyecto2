@@ -53,9 +53,8 @@
 	    </div>
 	  </div>
 	</div>
-
-
-
-
+	<div class="row">
+		@yield('content')
+	</div>
 </body>
 </html>
