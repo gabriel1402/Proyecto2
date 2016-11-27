@@ -18,3 +18,8 @@ Route::get('/', function () {
 Route::get('/bienes', function(){
     return view('bienes');
 });
+
+
+Route::group(['middlaware' => ['web']], function(){
+	Route::resource('/usuario','UsuariosController');
+});

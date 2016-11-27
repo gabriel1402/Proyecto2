@@ -10,6 +10,13 @@ Bienes raíces
     <li><a href="#">Contactanos</a></li>
 @stop
 
+
+
+@section('userBarMenu')
+    <li><a href="/usuario"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+@stop
+
 @section('content')
 <?php
         echo ('<h1>Banco Nacional</h1>');
