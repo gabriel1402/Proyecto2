@@ -139,7 +139,53 @@ class UsuariosController extends Controller
      */
     public function update(Request $request)
     {
-        //
+        $usuario = $request->Usuario;
+        $correo1 = $request->Correo;
+        $correo2 = $request->Correo2;
+        $contra1 = $request->Contra;
+        $contra2 = $request->Contra2;
+        $tel = $request->Telephono;
+        $error = "";
+
+        if($correo1!=$correo2){
+            $error = "Constraseñas Diferentes";
+            return view('/usuario/'.$usuario.'/edit', ['usuario' => $usuario, 
+                                            'correo1' => $correo1,
+                                            'correo2' => $correo2,
+                                            'contra1' => $contra1,
+                                            'contra2' => $contra2,
+                                            'tel' => $tel,
+                                            'errorMessage' => $error]);
+            
+        };
+        if($contra1!=$contra2){
+            $error = "Constraseñas Diferentes";
+            return view('/usuario/'.$usuario.'/edit', ['usuario' => $usuario, 
+                                            'correo1' => $correo1,
+                                            'correo2' => $correo2,
+                                            'contra1' => $contra1,
+                                            'contra2' => $contra2,
+                                            'tel' => $tel,
+                                            'errorMessage' => $error]);
+        };
+
+        if(!
+            DB::table('Users')->update(['password' => $contra1,
+                                            'CorreoElectronico' => $correo1,
+                                            'Telephono' => $tel
+                    ])->where('id', $usuario)
+            ){
+            $error = "Error de Creacion, porfavor intertar luego";
+            return view('/usuario/'.$usuario.'/edit', ['usuario' => $usuario, 
+                                            'correo1' => $correo1,
+                                            'correo2' => $correo2,
+                                            'contra1' => $contra1,
+                                            'contra2' => $contra2,
+                                            'tel' => $tel,
+                                            'errorMessage' => $error]);
+        };
+
+        return view('welcome');
     }
 
     /**

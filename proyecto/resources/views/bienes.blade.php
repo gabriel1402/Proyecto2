@@ -11,7 +11,6 @@ Bienes raíces
 @stop
 
 
-
 @section('userBarMenu')
     <?php
         if(!isset($_COOKIE['user'])) {
@@ -23,16 +22,15 @@ Bienes raíces
     ?>    
 @stop
 
-
 @section('content')
-<form class="form-horizontal" role="form" method="POST" action="{{ url('/') }}">
+<form class="form-horizontal" role="form" method="POST" action="{{ url('/bienes/create') }}">
     {{ csrf_field() }}
 
     <div class="form-group">
         <label for="tipo" class="col-md-4 control-label">Tipo</label>
 
         <div class="col-md-6">
-            <input id="tipo" type="text" class="form-control" name="tipo" required autofocus>
+            <input id="tipo" type="text" class="form-control" name="tipo" value="{{old('tipo')}}" required autofocus>
         </div>
     </div>
 
@@ -40,7 +38,7 @@ Bienes raíces
         <label for="provincia" class="col-md-4 control-label">Provincia</label>
 
         <div class="col-md-6">
-            <input id="provincia" type="text" class="form-control" name="provincia" required>            
+            <input id="provincia" type="text" class="form-control" name="provincia" value="{{old('provincia')}}" required>            
         </div>
     </div>
 
@@ -48,7 +46,7 @@ Bienes raíces
         <label for="canton" class="col-md-4 control-label">Cantón</label>
 
         <div class="col-md-6">
-            <input id="canton" type="text" class="form-control" name="canton" required>            
+            <input id="canton" type="text" class="form-control" name="canton" value="{{old('canton')}}" required>            
         </div>
     </div>
     
@@ -56,7 +54,7 @@ Bienes raíces
         <label for="distrito" class="col-md-4 control-label">Distrito</label>
 
         <div class="col-md-6">
-            <input id="distrito" type="text" class="form-control" name="distrito" required>            
+            <input id="distrito" type="text" class="form-control" name="distrito" value="{{old('distrito')}}" required>            
         </div>
     </div> 
     
@@ -64,13 +62,13 @@ Bienes raíces
         <label for="tDesde" class="col-md-4 control-label">Tamaño desde</label>
 
         <div class="col-md-2">
-            <input id="tDesde" type="number" class="form-control" name="tDesde"  value="0" required>
+            <input id="tDesde" type="number" class="form-control" name="tDesde"  value="{{old('tDesde',0)}}" min="0" required>
         </div>
         
         <label for="tHasta" class="col-md-2 control-label">Tamaño hasta</label>
 
         <div class="col-md-2">
-            <input id="tHasta" type="number" class="form-control" name="tHasta"  value="0" required>
+            <input id="tHasta" type="number" class="form-control" name="tHasta"  value="{{old('tHasta',0)}}" min="0" required>
         </div>
     </div>    
     
@@ -78,13 +76,13 @@ Bienes raíces
         <label for="pDesde" class="col-md-4 control-label">Precio desde</label>
 
         <div class="col-md-2">
-            <input id="pDesde" type="number" class="form-control" name="pDesde"  value="0" required>
+            <input id="pDesde" type="number" class="form-control" name="pDesde"  value="{{old('pDesde',0)}}" min="0" required>
         </div>
         
         <label for="pHasta" class="col-md-2 control-label">Precio hasta</label>
 
         <div class="col-md-2">
-            <input id="pHasta" type="number" class="form-control" name="pHasta"  value="0" required>
+            <input id="pHasta" type="number" class="form-control" name="pHasta"  value="{{old('pHasta',0)}}" min="0" required>
         </div>
     </div>
     
@@ -92,7 +90,7 @@ Bienes raíces
         <label for="negociable" class="col-md-4 control-label">Negociable</label>
 
         <div class="col-md-1">
-            <input id="negociable" type="checkbox" class="form-control" name="negociable" value="1" required>
+            <input id="negociable" type="checkbox" class="form-control" name="negociable" value="1" @if(old('negociable')) checked @endif>
         </div>
     </div>
     
@@ -100,7 +98,7 @@ Bienes raíces
         <label for="venta" class="col-md-4 control-label">Tipo de venta</label>
 
         <div class="col-md-6">
-            <input id="venta" type="text" class="form-control" name="venta" required>
+            <input id="venta" type="text" class="form-control" name="venta" value="{{old('venta')}}" required>
         </div>
     </div>
     
@@ -108,7 +106,7 @@ Bienes raíces
         <label for="estado" class="col-md-4 control-label">Estado de la propiedad</label>
 
         <div class="col-md-6">
-            <input id="estado" type="text" class="form-control" name="estado" required>
+            <input id="estado" type="text" class="form-control" name="estado" value="{{old('estado')}}" required>
         </div>
     </div>
     
@@ -116,7 +114,7 @@ Bienes raíces
         <label for="direccion" class="col-md-4 control-label">Dirección exacta</label>
 
         <div class="col-md-6">
-            <input id="direccion" type="text" class="form-control" name="direccion" required>
+            <input id="direccion" type="text" class="form-control" name="direccion" value="{{old('direccion')}}" required>
         </div>
     </div>
 
@@ -136,4 +134,9 @@ Bienes raíces
         </div>
     </div>
 </form>
+<div class="errorType">
+    @if( session()->has('errorMessage'))
+        {{session('errorMessage')}}
+    @endif
+</div>
 @stop

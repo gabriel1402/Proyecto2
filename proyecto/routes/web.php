@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('/bienes', function(){
     return view('bienes');
-});
+})->name('bienes');
 
 
 Route::group(['middlaware' => ['web']], function(){
@@ -25,6 +25,9 @@ Route::group(['middlaware' => ['web']], function(){
 
 	Route::resource('/usuario','UsuariosController');
 	Route::post('/usuario/create', 'UsuariosController@create');
+
+    Route::post('/bienes/create', 'BienesController@create');
+
 	Route::resource('/login','LoginController');
 	Route::post('/login/auth', 'LoginController@login');
 	Route::post('/usuario/update', 'LoginController@update');
