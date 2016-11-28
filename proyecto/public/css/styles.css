@@ -24,3 +24,8 @@ body{
 .center{
 	text-align: center;
 }
+
+.errorType{
+	color: red;
+	text-align: center;
+}

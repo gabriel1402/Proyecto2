@@ -16,9 +16,6 @@ class UsuariosController extends Controller
 
     public function __construct()
     {
-        // Apply the jwt.auth middleware to all methods in this controller
-        // except for the authenticate method. We don't want to prevent
-        // the user from retrieving their token if they don't already have it
         $this->middleware('auth', ['except' => ['index','create']]);
     }
 
@@ -38,9 +35,31 @@ class UsuariosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create( Request $request)
+    public function create(Request $request)
     {
-        echo "hola";
+        $usuario = $request->Usuario;
+        $correo1 = $request->Correo;
+        $correo2 = $request->Correo2;
+        $contra1 = $request->Contra;
+        $contra2 = $request->Contra2;
+        $tel = $request->Telephono;
+        $error = "";
+
+        if($correo1!=$correo2){
+            $error = "Constraseñas Diferentes";
+            
+        }else if($contra1!=$contra2){
+            $error = "Constraseñas Diferentes";
+        }
+
+
+        return view('/usuario/index', ['usuario' => $usuario, 
+                                            'correo1' => $correo1,
+                                            'correo2' => $correo2,
+                                            'contra1' => $contra1,
+                                            'contra2' => $contra2,
+                                            'tel' => $tel,
+                                            'errorMessage' => $error]);
     }
 
     /**
