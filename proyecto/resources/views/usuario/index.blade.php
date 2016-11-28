@@ -16,7 +16,7 @@ Bienes raíces
 @stop
 
 @section('content')
-	<form action="usuario/create" method="POST">
+	<form action="{{url('usuario/create')}}" method="POST">
 		   	<input type="hidden" name="_token" value="{{ csrf_token() }}">
            	<h3 class="center">Sign Up</h3>
 
