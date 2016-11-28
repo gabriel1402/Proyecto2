@@ -17,6 +17,9 @@ Route::get('/bienes', function(){
     return view('bienes');
 })->name('bienes');
 
+Route::get('/contact', function(){
+    return view('contact');
+})->name('contact');
 
 Route::group(['middlaware' => ['web']], function(){
 
@@ -30,4 +33,5 @@ Route::group(['middlaware' => ['web']], function(){
 	Route::post('/login/auth', 'LoginController@login');
 	Route::post('/usuario/update', 'UsuariosController@update');
 	Route::get('/logout', 'LoginController@logout');
+	Route::post('/contact/send', 'MessageController@send');
 });
