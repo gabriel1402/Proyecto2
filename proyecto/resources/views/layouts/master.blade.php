@@ -75,7 +75,7 @@
         	<div class="col-md-3">
         	</div>
 	          <div class="col-md-6">
-	            <p>&copy; Copyright <?php echo date('Y'); ?>.</p>
+	            <p>&copy; Copyright <?php echo date('Y'); ?>. Instituto Tecnologico de Costa Rica, Proyecto de Instroduccion al desarrollo de aplicaciones web. </p>
 	          </div>
         </div>
       </div>

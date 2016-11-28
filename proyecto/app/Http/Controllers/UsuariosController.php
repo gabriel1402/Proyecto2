@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\User;
+USE DB;
 
 class UsuariosController extends Controller
 {   
@@ -47,19 +48,44 @@ class UsuariosController extends Controller
 
         if($correo1!=$correo2){
             $error = "Constraseñas Diferentes";
-            
-        }else if($contra1!=$contra2){
-            $error = "Constraseñas Diferentes";
-        }
-
-
-        return view('/usuario/index', ['usuario' => $usuario, 
+            return view('/usuario/index', ['usuario' => $usuario, 
                                             'correo1' => $correo1,
                                             'correo2' => $correo2,
                                             'contra1' => $contra1,
                                             'contra2' => $contra2,
                                             'tel' => $tel,
                                             'errorMessage' => $error]);
+            
+        };
+        if($contra1!=$contra2){
+            $error = "Constraseñas Diferentes";
+            return view('/usuario/index', ['usuario' => $usuario, 
+                                            'correo1' => $correo1,
+                                            'correo2' => $correo2,
+                                            'contra1' => $contra1,
+                                            'contra2' => $contra2,
+                                            'tel' => $tel,
+                                            'errorMessage' => $error]);
+        };
+
+        if(!
+            DB::table('Usuario')->insert([ 'Usuario' => $usuario, 
+                                            'Constraseña' => $contra1,
+                                            'CorreoElectronico' => $correo1,
+                                            'Telephono' => $tel
+                    ])
+            ){
+            $error = "Error de Creacion, porfavor intertar luego";
+            return view('/usuario/index', ['usuario' => $usuario, 
+                                            'correo1' => $correo1,
+                                            'correo2' => $correo2,
+                                            'contra1' => $contra1,
+                                            'contra2' => $contra2,
+                                            'tel' => $tel,
+                                            'errorMessage' => $error]);
+        };
+
+        return view('welcome');
     }
 
     /**
