@@ -98,7 +98,27 @@ Dashboard
                     echo ('<a href="'.$btns[$j]->getAttribute('href').'" target="_blank">Ver detalles en la página</a>');
                     echo ('</div></div></div>');
                 };
-            }
+            }                                    
         }
 ?>
+
+<h1>Bienes de Costa Rica</h1>
+@foreach($properties as $result)
+    <div class="container col-md-6">
+        <div class="row">
+            <div class="col-md-8">
+                <img src="/img/sinImagen.jpg" width="244" height="163">
+            </div>
+            <div class="container col-md-4">
+                <p>Precio: {{$result->precioDesde}}-{{$result->precioHasta}}</p>
+                <p>{{$result->TipoDeVenta}}</p>
+                <p>{{$result->Tipo}}</p>
+                <p>{{$result->TamanoDesde}}m<sup>2</sup> - {{$result->TamanoHasta}}m<sup>2</sup></p>
+                <p>{{$result->Provincia}},{{$result->Canton}},{{$result->Distrito}}</p>
+            </div>
+        </div>
+        
+</div>
+<br>
+@endforeach
 @stop
