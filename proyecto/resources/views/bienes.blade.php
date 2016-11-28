@@ -13,8 +13,14 @@ Bienes raíces
 
 
 @section('userBarMenu')
-    <li><a href="/usuario"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    <?php
+        if(isset($_COOKIE['user'])) {
+            echo '<li><a href="/usuario"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>';
+            echo '<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>';
+        } else {
+            echo '<li><a href="/login/update"><span class="glyphicon glyphicon-log-in"></span>'.$_COOKIE['user'].'</a></li>';
+        }
+    ?>  
 @stop
 @section('content')
 <form class="form-horizontal" role="form" method="POST" action="{{ url('/') }}">

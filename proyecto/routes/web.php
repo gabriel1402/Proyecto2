@@ -25,4 +25,6 @@ Route::group(['middlaware' => ['web']], function(){
 
 	Route::resource('/usuario','UsuariosController');
 	Route::post('/usuario/create', 'UsuariosController@create');
+	Route::resource('/login','LoginController');
+	Route::post('/login/auth', 'LoginController@login');
 });
