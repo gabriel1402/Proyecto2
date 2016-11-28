@@ -210,8 +210,5 @@ class UsuariosController extends Controller
         //
     }
 
-    public function logout(){
-        setcookie("user", "", time() - 3600);
-        echo "string";
-    }
+    
 }

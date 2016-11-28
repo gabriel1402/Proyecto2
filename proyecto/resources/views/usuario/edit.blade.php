@@ -53,7 +53,7 @@ Bienes raíces
            <input type="submit" class="btn btn-success">
        </form>
        <br><br>
-       <a href="/usuario/logout" class="btn btn-danger">Log Out</a> 
+       <a href="/logout" class="btn btn-danger">Log Out</a> 
        <div class="errorType">
 	       	@if( ! empty($errorMessage))
     			    {{$errorMessage}}

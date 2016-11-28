@@ -18,7 +18,7 @@ class LoginController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index','login']]);
+        $this->middleware('auth', ['except' => ['index','login','logout']]);
     }
 
 
@@ -55,5 +55,10 @@ class LoginController extends Controller
         return view('login',['usuario' => $usuario,
                             'contra1' => $contra1,
                             'errorMessage' => $error]);
+    }
+    public function logout(){
+        setcookie("user", "", time() - 3600);
+        Auth::logout();
+        return view('welcome');
     }
 }

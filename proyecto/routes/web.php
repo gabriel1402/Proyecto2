@@ -31,5 +31,5 @@ Route::group(['middlaware' => ['web']], function(){
 	Route::resource('/login','LoginController');
 	Route::post('/login/auth', 'LoginController@login');
 	Route::post('/usuario/update', 'UsuariosController@update');
-	Route::get('/usuario/logout', 'UsuariosController@logout');
+	Route::get('/logout', 'LoginController@logout');
 });
