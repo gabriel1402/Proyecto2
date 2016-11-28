@@ -22,29 +22,45 @@ Bienes raíces
 @stop
 
 @section('content')
-<div class="col-md-3">
-</div>
-<div class="col-md-5">
-	<form action="{{url('/login/auth')}}" method="POST">
+	<form action="{{url('login/update')}}" method="POST">
 		   	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-           	<h3 class="center">Login</h3>
+           	<h3 class="center">Edit Profile</h3>
 
            	<label for="Usuario">Usuario</label>
            	<input class="form-control" id="Usuario" maxlength="20" name="Usuario" type="text"  placeholder="Nombre de Usuario" 
            	value="@if(!empty($usuario)){{$usuario}}@endif" required>           
            	<br>
+
+           	<label for="Correo">Correo Electronico</label>
+           	<input class="form-control" id="Correo" maxlength="30" name="Correo" type="email" placeholder="Correo Electronico" 
+           	value="@if( ! empty($correo1)){{$correo1}}@endif" required>          
+           	<br>
+           	<input class="form-control" id="Correo2" maxlength="30" name="Correo2" type="email" placeholder="Reingresa el Correo Electronico" 
+           	value="@if( ! empty($correo2)){{$correo2}}@endif" required>           
+           	<br>
+
            	
            	<label for="Contra">Constraseña</label>
            	<input class="form-control" id="Contra" maxlength="20" name="Contra" type="password" placeholder="Constraseña" 
            	value="@if( ! empty($contra1)){{$contra1}}@endif" required>           
            	<br>
+           	<input class="form-control" id="Contra2" maxlength="20" name="Contra2" type="password" placeholder="Reingresar Constraseña" 
+           	value="@if( ! empty($contra2)){{$contra2}}@endif" required>
+           	<br>
+
+            <label for="Telephono">Telephono</label>
+           	<input class="form-control" id="Telephono" maxlength="8" name="Telephono" type="text" placeholder="88888888" 
+           	value="@if( ! empty($tel)){{$tel}}@endif" required>           
+           	<br>
+
 
            <input type="submit" class="btn btn-success">
        </form>
+       <br><br>
+       <a href="{{url('usuario/logout')}}" class="btn btn-danger">Log Out</a> 
        <div class="errorType">
 	       	@if( ! empty($errorMessage))
-  			    {{$errorMessage}}
-  			@endif
+			    {{$errorMessage}}
+			@endif
        </div>
-</div>
 @stop

@@ -17,7 +17,7 @@ class UsuariosController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index','create']]);
+        $this->middleware('auth', ['except' => ['index','create','edit','update']]);
     }
 
 
@@ -69,8 +69,8 @@ class UsuariosController extends Controller
         };
 
         if(!
-            DB::table('Usuario')->insert([ 'Usuario' => $usuario, 
-                                            'Constraseña' => $contra1,
+            DB::table('Users')->insert([ 'id' => $usuario, 
+                                            'password' => $contra1,
                                             'CorreoElectronico' => $correo1,
                                             'Telephono' => $tel
                     ])
@@ -117,8 +117,17 @@ class UsuariosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {  
+
+        $user = DB::table('Users')->get()->where('id', $id)->first();
+
+        return view('usuario/edit' , ['usuario' => $user->id, 
+                                            'correo1' => $user->CorreoElectronico,
+                                            'correo2' => $user->CorreoElectronico,
+                                            'contra1' => $user->password,
+                                            'contra2' => $user->password,
+                                            'tel' => $user->Telephono,
+                                            'errorMessage' => ""]);
     }
 
     /**
@@ -128,7 +137,7 @@ class UsuariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
     }
@@ -142,5 +151,9 @@ class UsuariosController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function logout(){
+
     }
 }

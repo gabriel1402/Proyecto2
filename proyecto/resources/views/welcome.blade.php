@@ -11,9 +11,8 @@ Dashboard
             echo '<li><a href="/usuario"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>';
             echo '<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>';
         } else {
-            echo '<li><a href="/login/update"><span class="glyphicon glyphicon-user"></span>  '.$_COOKIE['user'].'</a></li>';
+            echo '<li><a href="/usuario/'.$_COOKIE['user'].'/edit"><span class="glyphicon glyphicon-user"></span>  '.$_COOKIE['user'].'</a></li>';
         };
-        echo $_COOKIE['user'];
     ?>    
 @stop
 

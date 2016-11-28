@@ -1,10 +1,11 @@
+/*DROP DATABASE mainDB;*/
 CREATE DATABASE mainDB;
 USE mainDB;
 
 /*DROP TABLE Clientes*/
-CREATE TABLE Usuario(
-	Usuario varchar(20) primary key,
-	Constraseña varchar(20) not null,
+CREATE TABLE Users(
+	id varchar(20) primary key,
+	password varchar(20) not null,
 	CorreoElectronico varchar(30) not null,
     EsAdministrador boolean DEFAULT false,
     Telephono varchar(8) not null,
@@ -29,7 +30,7 @@ CREATE TABLE Bien(
 	DireccionExacta varchar(300) not null,
     PropietarioUsuario varchar(20) NOT NULL,
     
-    FOREIGN KEY (PropietarioUsuario) REFERENCES Usuario(Usuario)
+    FOREIGN KEY (PropietarioUsuario) REFERENCES Users(id)
 );
 
 CREATE TABLE ImagenesBien(
@@ -44,3 +45,6 @@ CREATE TABLE Mensaje(
     email varchar(30) not null,
     mensaje varchar(300) not null
 );
+
+
+SELECT * FROM Users;

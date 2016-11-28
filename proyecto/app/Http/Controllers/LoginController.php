@@ -10,10 +10,11 @@ use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\User;
 USE DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class LoginController extends Controller
 {   
-
 
     public function __construct()
     {
@@ -38,12 +39,15 @@ class LoginController extends Controller
         $error = "";
 
         try{
-            $pass = DB::table('Usuario')->select('Constraseña')->where('Usuario', $usuario)->first();
+            $pass = DB::table('Users')->select('password')->where('id', $usuario)->first();
         }catch(Exeption $e){
             $error = "Usuario Erroneo";
         };
-        if($contra1 == $pass->Constraseña){
+        if($contra1 == $pass->password){
             setcookie('user', $usuario, time() + (86400 * 30), "/");
+
+            Auth::loginUsingId(1);
+            
             return redirect('/');
         };
         $error = "Contraseña erronea";
