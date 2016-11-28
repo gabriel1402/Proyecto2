@@ -18,7 +18,6 @@
 
 	<link rel="stylesheet" href="css/styles.css">
 	<script src="js/custom.js"></script>
-
 </head>
 <body>
 	<div class="row headTop">

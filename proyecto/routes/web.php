@@ -21,5 +21,8 @@ Route::get('/bienes', function(){
 
 
 Route::group(['middlaware' => ['web']], function(){
+
+
 	Route::resource('/usuario','UsuariosController');
+	Route::post('/usuario/create', 'UsuariosController@create');
 });

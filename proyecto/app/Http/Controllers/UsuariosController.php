@@ -6,9 +6,23 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use App\User;
 
 class UsuariosController extends Controller
-{
+{   
+
+
+    public function __construct()
+    {
+        // Apply the jwt.auth middleware to all methods in this controller
+        // except for the authenticate method. We don't want to prevent
+        // the user from retrieving their token if they don't already have it
+        $this->middleware('auth', ['except' => ['index','create']]);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -24,9 +38,9 @@ class UsuariosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create( Request $request)
     {
-        //
+        echo "hola";
     }
 
     /**

@@ -16,32 +16,9 @@ Bienes raíces
 @stop
 
 @section('content')
-<form action="usuario/create" method="GET">
+	<form action="usuario/create" method="POST">
+		   <input type="hidden" name="_token" value="{{ csrf_token() }}">
            <h3 class="center">Sign Up</h3>
-
-           <label for="cedula">Cedula</label>
-           <input class="form-control" id="cedula" name="cedula" type="text">           
-           <br>
-
-           <label for="Nombre">Nombre</label>
-           <input class="form-control" id="Nombre" name="Nombre" type="text">           
-           <br>
-
-           <label for="Apellido">Apellido</label>
-           <input class="form-control" id="Apellido" name="Apellido" type="text">           
-           <br>
-
-           <label for="Nacimiento">Fecha Nacimiento (YYYY-MM-DD)</label>
-           <input class="form-control" id="Nacimiento" name="Nacimiento" type="text">           
-           <br>
-
-           <label for="Direccion">Direccion</label>
-           <input class="form-control" id="Direccion" name="Direccion" type="text">           
-           <br>
-
-           <label for="Estado">Estado Civil</label>
-           <input class="form-control" id="Estado" name="Estado" type="text">           
-           <br>
 
            <label for="Sexo" >Sexo</label>
            <select name="Sexo" class="form-control" >
