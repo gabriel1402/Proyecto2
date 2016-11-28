@@ -6,7 +6,7 @@ CREATE TABLE Usuario(
 	Usuario varchar(20) primary key,
 	Constraseña varchar(20) not null,
 	CorreoElectronico varchar(30) not null,
-    EsAdministrador boolean not null,
+    EsAdministrador boolean DEFAULT false,
     Telephono varchar(8) not null,
     Desabilitado boolean DEFAULT false
 );
