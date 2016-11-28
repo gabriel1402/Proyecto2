@@ -24,11 +24,7 @@ Bienes raíces
 @section('content')
 	<form action="{{url('usuario/update')}}" method="POST">
 		   	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-           	<h3 class="center">Edit Profile</h3>
-
-           	<label for="Usuario">Usuario</label>
-           	<input class="form-control" id="Usuario" maxlength="20" name="Usuario" type="text"  placeholder="Nombre de Usuario" 
-           	value="@if(!empty($usuario)){{$usuario}}@endif" required>           
+           	<h3 class="center">Edit Profile</h3>       
            	<br>
 
            	<label for="Correo">Correo Electronico</label>

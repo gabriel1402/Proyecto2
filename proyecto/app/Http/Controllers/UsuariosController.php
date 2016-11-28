@@ -17,7 +17,7 @@ class UsuariosController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index','create','edit','update']]);
+        $this->middleware('auth', ['except' => ['index','create','edit','update','logout']]);
     }
 
 
@@ -121,7 +121,7 @@ class UsuariosController extends Controller
 
         $user = DB::table('Users')->get()->where('id', $id)->first();
 
-        return view('usuario/edit' , ['usuario' => $user->id, 
+        return view('usuario/edit' , [ 
                                             'correo1' => $user->CorreoElectronico,
                                             'correo2' => $user->CorreoElectronico,
                                             'contra1' => $user->password,
@@ -149,7 +149,7 @@ class UsuariosController extends Controller
 
         if($correo1!=$correo2){
             $error = "Constraseñas Diferentes";
-            return view('/usuario/'.$usuario.'/edit', ['usuario' => $usuario, 
+            return view('usuario.edit', [
                                             'correo1' => $correo1,
                                             'correo2' => $correo2,
                                             'contra1' => $contra1,
@@ -160,7 +160,7 @@ class UsuariosController extends Controller
         };
         if($contra1!=$contra2){
             $error = "Constraseñas Diferentes";
-            return view('/usuario/'.$usuario.'/edit', ['usuario' => $usuario, 
+            return view('usuario.edit', [
                                             'correo1' => $correo1,
                                             'correo2' => $correo2,
                                             'contra1' => $contra1,
@@ -170,13 +170,24 @@ class UsuariosController extends Controller
         };
 
         if(!
-            DB::table('Users')->update(['password' => $contra1,
-                                            'CorreoElectronico' => $correo1,
-                                            'Telephono' => $tel
-                    ])->where('id', $usuario)
+
+
+           DB::table('Users')
+            ->where('id', $_COOKIE['user'])
+            ->update([
+                'password' => $contra1,
+                'CorreoElectronico' => $correo1,
+                'Telephono' => $tel
+                ])
+
+
+
+
+
+
             ){
-            $error = "Error de Creacion, porfavor intertar luego";
-            return view('/usuario/'.$usuario.'/edit', ['usuario' => $usuario, 
+            $error = "Error de actualizacion, porfavor intentar de nuevo mas tarde";
+            return view('usuario.edit', [
                                             'correo1' => $correo1,
                                             'correo2' => $correo2,
                                             'contra1' => $contra1,
@@ -200,6 +211,7 @@ class UsuariosController extends Controller
     }
 
     public function logout(){
-
+        setcookie("user", "", time() - 3600);
+        echo "string";
     }
 }
