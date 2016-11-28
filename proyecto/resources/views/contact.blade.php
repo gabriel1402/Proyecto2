@@ -33,8 +33,8 @@ Bienes raíces
            	<br>
 
            	
-           	<label for="Asunto">Asunto</label>
-           	<input class="form-control" id="Asunto" maxlength="20" name="Asunto" type="text" placeholder="Constraseña" 
+           	<label for="Asunto">Nombre Completo</label>
+           	<input class="form-control" id="Asunto" maxlength="20" name="Asunto" type="text" placeholder="Tu Nombre" 
            	value="@if( ! empty($Asunto)){{$Asunto}}@endif" required>           
            	<br>
 

@@ -11,6 +11,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use App\User;
 USE DB;
 use Illuminate\Support\Facades\Auth;
+use Mail;
 
 
 class MessageController extends Controller
@@ -22,7 +23,7 @@ class MessageController extends Controller
     }
 
 
-    public function send(){
+    public function send(Request $request){
         $coreo = $request->Correo;
         $asunto = $request->Asunto;
         $mesaje = $request->Mensaje;
@@ -41,7 +42,7 @@ class MessageController extends Controller
                                             'errorMessage' => $error]);
         };
 
-        Mail::send('emails.reminder', ['user' => 1], function ($mesaje) {
+        Mail::send('welcome', ['user' => 1], function ($mesaje) {
             $message->from($coreo, 'Contact - Bienes de Costa Rica');
 
             $message->to('alruiz300795@gmail.com')->cc('gabriel.r1402@gmail.com')->subject($asunto);

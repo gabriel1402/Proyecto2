@@ -48,3 +48,4 @@ CREATE TABLE Mensaje(
 
 
 SELECT * FROM Users;
+SELECT * FROM Mesaje;
